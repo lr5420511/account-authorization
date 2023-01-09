@@ -1,0 +1,10 @@
+// 多设备适配混入
+.devices-mixin(@devices, @rem-percent, @index: 1) when(@index <= length(@devices)) {
+    @media(min-width: extract(@devices, @index)) {
+        html {
+            font-size: extract(@devices, @index) * @rem-percent;
+        }
+    }
+
+    .devices-mixin(@devices, @rem-percent, @index + 1);
+}
